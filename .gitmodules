@@ -1,0 +1,3 @@
+[submodule "vendor/Karen"]
+	path = vendor/Karen
+	url = https://github.com/QaisAlsaid/Karen.git
