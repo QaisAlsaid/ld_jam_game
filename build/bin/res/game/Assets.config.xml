@@ -1,0 +1,90 @@
+<AssetsList>
+<Textures>
+  <Name>tux1</Name>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/1.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/2.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/idle/3.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/4.png</Path>
+  </Texture>
+</Textures>
+<Animation>
+  <Name>anim3</Name>
+  <Speed>0.2f</Speed>
+  <Repeated>True</Repeated>
+  <Textures>tux1</Textures>
+</Animation>
+</AssetsList>
+<AssetsList>
+<Textures>
+  <Name>tux2</Name>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/1.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/2.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/walk/3.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/4.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/walk/5.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/6.png</Path>
+  </Texture>
+</Textures>
+<Animation>
+  <Name>anim2</Name>
+  <Speed>0.4f</Speed>
+  <Repeated>True</Repeated>
+  <Textures>tux2</Textures>
+</Animation>
+
+</AssetsList>
+<AssetsList>
+<Textures>
+  <Name>tux3</Name>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/run/1.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/run/2.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/run/3.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/run/4.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/run/5.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/run/6.png</Path>
+  </Texture>
+</Textures>
+<Animation>
+  <Name>anim1</Name>
+  <Speed>0.17f</Speed>
+  <Repeated>True</Repeated>
+  <Textures>tux3</Textures>
+</Animation>
+</AssetsList>

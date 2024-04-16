@@ -1,0 +1,43 @@
+
+<Textures>
+  <Name>tux1</Name>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/1.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/2.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/idle/3.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/idle/4.png</Path>
+  </Texture>
+</Textures>
+<Textures>
+  <Name>tux2</Name>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/1.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/2.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/walk/3.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/4.png</Path>
+  </Texture>
+ <Texture>
+    <Path>./res/game/textuers/characters/main/walk/5.png</Path>
+    <Flip>True</Flip>
+  </Texture>
+  <Texture>
+    <Path>./res/game/textuers/characters/main/walk/6.png</Path>
+  </Texture>
+</Textures>
+<Textures>

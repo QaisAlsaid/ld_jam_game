@@ -1,12 +1,12 @@
-cmake_minimum_required(Version 3.28)
+cmake_minimum_required(VERSION 3.28)
 project(ldjamgame LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(KAREN_EMPSCRIPTEN OFF CACHE BOOL "enables web build")
-set (src src/App.cpp src/)
+set (SRC src/App.cpp src/GameLayer.cpp src/Animation.cpp src/AssetManager.cpp src/RandomHelper.cpp src/ParticleSystem.cpp src/Level.cpp src/Entity.cpp src/SweptAABB.cpp)
 add_subdirectory(vendor/Karen/Karen/)
 
-add_executable(${PROJECT_NAME} src)
+add_executable(${PROJECT_NAME} ${SRC})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${KAREN_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} Karen)

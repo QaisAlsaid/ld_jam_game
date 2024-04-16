@@ -1,0 +1,29 @@
+<EntitiesList>
+  <Entity>
+    <Name>Player</Name>
+    <Animations>
+      <Animation>
+        <Name>idel</Name>
+        <AnimationHandle>anim1</AnimationHandle>
+      </Animation>
+    </Animations>
+  <CollisionShapes>
+      <Shape>
+        <Name>default</Name>
+        <Position>
+          <X>100.0f</X>
+          <Y>100.0f</Y>
+        </Position>
+        <Velocity>
+        <X>10.0f</X>
+          <Y>0.0f</Y>
+        </Velocity>
+        <Type>Rectangle</Type>
+        <Size>
+          <Width>20.0f</Width>
+          <Height>20.0f</Height>
+        </Size>
+      </Shape>
+    </CollisionShapes>
+  </Entity>
+</EntitiesList>

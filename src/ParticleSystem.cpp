@@ -1,9 +1,9 @@
 #include "ParticleSystem.h"
 
-#include "Random.h"
+#include "RandomHelper.h"
 
 #include <glm/gtc/constants.hpp>
-#define GLM_ENABLE_EXPERIMENTAL
+#include <pstl/glue_execution_defs.h>
 #include <glm/gtx/compatibility.hpp>
 
 ParticleSystem::ParticleSystem()
@@ -11,63 +11,59 @@ ParticleSystem::ParticleSystem()
 	m_particle_pool.resize(1000);
 }
 
-void ParticleSystem::onUpdate(Karen::TimeStep ts)
+void ParticleSystem::onUpdate(Karen::Timestep ts)
 {
 	for (auto& particle : m_particle_pool)
 	{
-		if (!particle.Active)
+		if (!particle.active)
 			continue;
 
-		if (particle.LifeRemaining <= 0.0f)
+		if (particle.life_remaining <= 0.0f)
 		{
-			particle.Active = false;
+			particle.active = false;
 			continue;
 		}
 
-		particle.LifeRemaining -= ts;
-		particle.Position += particle.Velocity * (float)ts;
-		particle.Rotation += 0.01f * ts;
+		particle.life_remaining -= ts;
+		particle.position += particle.velocity * ts.getTime();
+		particle.rotation += 0.01f * ts;
 	}
 }
 
-void ParticleSystem::OnRender(Karen::OrthographicCamera& camera)
+void ParticleSystem::onRender()
 {
 	for (auto& particle : m_particle_pool)
 	{
-		if (!particle.Active)
+		if (!particle.active)
 			continue;
 
-		// Fade away particles
-		float life = particle.LifeRemaining / particle.LifeTime;
-    Karen::Vec4 color = glm::lerp(particle.ColorEnd, particle.ColorBegin, life);
-		//color.a = color.a * life;
+		float life = particle.life_remaining / particle.life_time;
+    Karen::Vec4 color = glm::lerp(particle.end_color, particle.begin_color, life);
 
-		float size = glm::lerp(particle.SizeEnd, particle.SizeBegin, life);
+		float size = glm::lerp(particle.end_size, particle.begin_size, life);
 		
-	  Karen::Renderer2D::drawQuad(particle.Position, Karen::Vec3(size, size, 0.0f), particle.Rotation)
+	  Karen::Renderer2D::drawQuad(particle.position, Karen::Vec2(size), particle.rotation, Karen::Vec4(color));
   }
 }
 
-void ParticleSystem::Emit(const ParticleProps& particleProps)
+void ParticleSystem::emit(const ParticleProps& particleProps)
 {
 	Particle& particle = m_particle_pool.at(m_pool_index);
-	particle.Active = true;
-	particle.Position = particleProps.Position;
-	particle.Rotation = Random::Float() * 2.0f * glm::pi<float>();
+	particle.active = true;
+	particle.position = particleProps.position;
+	particle.rotation = Random::Float() * 2.0f * glm::pi<float>();
 
-	// Velocity
-	particle.Velocity = particleProps.Velocity;
-	particle.Velocity.x += particleProps.VelocityVariation.x * (Random::Float() - 0.5f);
-	particle.Velocity.y += particleProps.VelocityVariation.y * (Random::Float() - 0.5f);
+	particle.velocity = particleProps.velocity;
+	particle.velocity.x += particleProps.velocity_variation.x * (Random::Float() - 0.5f);
+	particle.velocity.y += particleProps.velocity_variation.y * (Random::Float() - 0.5f);
 
-	// Color
-	particle.ColorBegin = particleProps.ColorBegin;
-	particle.ColorEnd = particleProps.ColorEnd;
+	particle.begin_color = particleProps.begin_color;
+	particle.end_color = particleProps.end_color;
 
-	particle.LifeTime = particleProps.LifeTime;
-	particle.LifeRemaining = particleProps.LifeTime;
-	particle.SizeBegin = particleProps.SizeBegin + particleProps.SizeVariation * (Random::Float() - 0.5f);
-	particle.SizeEnd = particleProps.SizeEnd;
+	particle.life_time = particleProps.life_time;
+	particle.life_remaining = particleProps.life_time;
+	particle.begin_size = particleProps.begin_size + particleProps.size_variation * (Random::Float() - 0.5f);
+	particle.end_size = particleProps.end_size;
 
 	m_pool_index = --m_pool_index % m_particle_pool.size();
 }

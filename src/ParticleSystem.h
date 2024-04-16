@@ -5,11 +5,11 @@
 
 struct ParticleProps
 {
-  Karen::Vec2 Position;
-  Karen::Vec2 Velocity, VelocityVariation;
-  Karen::Vec4 ColorBegin, ColorEnd;
-	float SizeBegin, SizeEnd, SizeVariation;
-	float LifeTime = 1.0f;
+  Karen::Vec2 position = {0.0f, 0.0f};
+  Karen::Vec2 velocity = {0.0f, 0.0f}, velocity_variation = {0.0f, 0.0f};
+  Karen::Vec4 begin_color = Karen::Vec4(1.0f), end_color = Karen::Vec4(0.0f);
+	float begin_size = 1.0f, end_size = 0.0f, size_variation = 0.0f;
+	float life_time = 1.0f;
 };
 
 class ParticleSystem
@@ -18,28 +18,26 @@ public:
 	ParticleSystem();
 
 	void onUpdate(Karen::Timestep ts);
-	void onRender(Karen::OrthographicCamera& camera);
+	void onRender();
 
 	void emit(const ParticleProps& ParticleProps);
 private:
 	struct Particle
 	{
-    Karen::Vec2 Position;
-    Karen::Vec2 Velocity;
-    Karen::Vec4 ColorBegin, ColorEnd;
-		float Rotation = 0.0f;
-		float SizeBegin, SizeEnd;
+    Karen::Vec2 position;
+    Karen::Vec2 velocity;
+    Karen::Vec4 begin_color, end_color;
+		float rotation = 0.0f;
+		float begin_size, end_size;
 
-		float LifeTime = 1.0f;
-		float LifeRemaining = 0.0f;
+		float life_time = 1.0f;
+		float life_remaining = 0.0f;
 
-		bool Active = false;
+		bool active = false;
 	};
 	std::vector<Particle> m_particle_pool;
 	uint32_t m_pool_index = 999;
-
 	uint32_t m_quad_varr = 0;
-	std::unique_ptr<KAren::ARef<Karen::Shader>> m_particle_shader;
 };
 
 #endif //PARTICLE_SYSTEM_H
